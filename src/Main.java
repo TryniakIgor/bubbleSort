@@ -1,89 +1,57 @@
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
+import CustomLinkedList.CustomLinkedList;
+import bubbleSort.BubbleSort;
+
+
 
 public class Main {
     public static void main(String[] args) {
-        int[] arr = {3,7,23,76,4,8,};
-        bubbleSort(arr);
-//        for (int item: arr) {
-//            System.out.println(item);
-//        }
+        int[] arr = {3,7,-23,76,4,8,-4,0,500};
 
-        List<Integer> arrayList = new ArrayList<>();
-        List<Integer> linkedList = new LinkedList<>();
+        BubbleSort bubbleSort = new BubbleSort(arr);
+        System.out.println("********************************");
 
-        addTest(arrayList);
-        addTest(linkedList);
+        CustomLinkedList customLinkedList = new CustomLinkedList();
+        customLinkedList.add(4);
+        customLinkedList.add(5);
+        customLinkedList.add(9);
 
-        addToTheMiddleTest(arrayList);
-        addToTheMiddleTest(linkedList);
+        System.out.println("Initial customLinkedList: "+ customLinkedList.toString());
+        System.out.println("Test method add(55)");
+        customLinkedList.add(55);
+        System.out.println("Result: "+ customLinkedList.toString());
+        System.out.println("********************************");
 
-        arrayList.clear();
-        linkedList.clear();
+        System.out.println("Test method add(index:1, value:8)");
+        customLinkedList.add(1,8);
+        System.out.println("Result: "+ customLinkedList.toString());
+        System.out.println("********************************");
 
-        addToStartArrayList((ArrayList<Integer>) arrayList);
-        addToStartLinkedListy((LinkedList<Integer>) linkedList);
+        System.out.println("Test method contains(value:8)");
+        System.out.println(customLinkedList.contains(8));
+        System.out.println("********************************");
+
+        System.out.println("Test method get(index:0)");
+        System.out.println(customLinkedList.get(0));
+        System.out.println("********************************");
+
+        System.out.println("Test method remove(index:0)");
+        customLinkedList.remove(0);
+        System.out.println("Result: "+ customLinkedList.toString());
+        System.out.println("********************************");
+
+
+
+
+
+
+
+
+
+
+
     }
 
-    public static void addTest (List<Integer> list){
-        Date start = new Date();
-        for(int i = 0; i < 100000; i++) {
-            list.add(i);
-        }
-        Date end = new Date();
-        long resultTime = end.getTime() - start.getTime();
-        System.out.println("Test insert in the list of " + list.getClass());
-        System.out.println("Time of work " + resultTime);
-        System.out.println();
-    }
 
-    public static void addToTheMiddleTest (List<Integer> list){
-        Date start = new Date();
-        for(int i = 0; i < 100000; i++) {
-            list.add(i,list.size() / 2);
-        }
-        Date end = new Date();
-        long resultTime = end.getTime() - start.getTime();
-        System.out.println("Test insert in the middle of "+ list.getClass());
-        System.out.println("Time of work: " + resultTime);
-        System.out.println();
-    }
 
-    public static void addToStartArrayList (ArrayList<Integer> list){
-        Date start = new Date();
-        for(int i = 0; i < 100000; i++) {
-            list.add(0, i);
-        }
-        Date end = new Date();
-        long resultTime = end.getTime() - start.getTime();
-        System.out.println(list.getClass());
-        System.out.println("Test insert in the start: " + resultTime);
-        System.out.println();
-    }
 
-    public static void addToStartLinkedListy (LinkedList<Integer> list){
-        Date start = new Date();
-        for(int i = 0; i < 100000; i++) {
-            list.addFirst(i);
-        }
-        Date end = new Date();
-        long resultTime = end.getTime() - start.getTime();
-        System.out.println("Test insert in the start: " + list.getClass());
-        System.out.println("Time of work " + resultTime);
-    }
-
-    public static void bubbleSort(int[] arr) {
-        int n = arr.length;
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-                }
-            }
-        }
-    }
 }
